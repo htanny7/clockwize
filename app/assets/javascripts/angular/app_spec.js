@@ -1,3 +1,3 @@
-// Declare module here without route
-// for spec test
+// Declare module here without routes
+// for spec tests
 angular.module('clockwize', []);

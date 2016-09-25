@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 	# DO NOT DO get '*path' => 'application#index'
 	get 'events' => 'application#index'
 	get 'users' => 'application#index'
+	get 'about' => 'application#index'
 
 	# Adding extra 'api' layer to retrieve data via JSON
 	namespace :api, default: {format: :json} do

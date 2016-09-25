@@ -17,8 +17,7 @@ angular.module('clockwize', ['ngRoute', 'ngResource', 'templates'])
 			controller: 'EventsController'
 		})
 		.when('/about', {
-			templateUrl: 'about.html',
-			controller: 'AboutController'
+			templateUrl: 'about.html'
 		})
 		// Route all other paths to home
 		.otherwise({
@@ -32,6 +31,6 @@ angular.module('clockwize', ['ngRoute', 'ngResource', 'templates'])
 	$locationProvider.html5Mode(true);
 
 	// Making it work with CSRF protection
-	// authToken = $("meta[name=\"csrf-token\"]").attr("content");
-	// $httpProvider.defaults.headers.common["X-CSRF-TOKEN"] = authToken;
+	authToken = $("meta[name=\"csrf-token\"]").attr("content");
+	$httpProvider.defaults.headers.common["X-CSRF-TOKEN"] = authToken;
 });

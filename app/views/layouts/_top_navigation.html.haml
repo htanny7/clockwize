@@ -16,6 +16,7 @@
 				%li{ng: {repeat: "nav in topNavs", click: "select(nav.title)", class: "{active: isActive(nav.title)}"}}
 					%a{ng: {href: "{{nav.url}}"}}
 						{{nav.title}}
-			%ul.nav.navbar-nav.navbar-right
-				%li
-					%a{'ng-href' => 'signin'} Sign in
+			%form.navbar-form.navbar-right{ng: {controller: "UserController", submit: "signin()"}}
+				.form-group
+					%input.form-control{:placeholder => "Email", :type => "text", "ng-model" => "user.email"}
+				%button.btn.btn-success{:type => "submit"} Sign in

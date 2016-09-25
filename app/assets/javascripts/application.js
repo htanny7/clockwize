@@ -15,9 +15,9 @@
 // REMOVE FOR ANGULAR require turbolinks
 
 // ANGULAR
-//= require angular.js
-//= require angular-route.min
-//= require angular-resource.min
+//= require vendor/angular/angular.js
+//= require vendor/angular/angular-route.min.js
+//= require vendor/angular/angular-resource.min.js
 //= require angular-rails-templates
 
 // BOOTSTRAP
