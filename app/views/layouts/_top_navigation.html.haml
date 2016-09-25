@@ -1,0 +1,21 @@
+%nav.navbar.navbar-default{ng: {controller: "NavigationController"}}
+	.container-fluid
+		-# Brand and toggle get grouped for better mobile display
+		.navbar-header
+			%button.navbar-toggle.collapsed{"aria-expanded" => "false", "data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", :type => "button"}
+				%span.sr-only Toggle navigation
+				%span.icon-bar
+				%span.icon-bar
+				%span.icon-bar
+			%a.navbar-brand.glyphicon.glyphicon-calendar{ng: {href: "/", click: "select('Home')"}}
+
+		-# Collect the nav links, forms, and other content for toggling
+		#bs-example-navbar-collapse-1.collapse.navbar-collapse
+			-# %div{ ng: { show: "true", repeat: "foo in bar" } } --> <div ng-show="true" ng-repeat="foo in bar" } }
+			%ul.nav.navbar-nav
+				%li{ng: {repeat: "nav in topNavs", click: "select(nav.title)", class: "{active: isActive(nav.title)}"}}
+					%a{ng: {href: "{{nav.url}}"}}
+						{{nav.title}}
+			%ul.nav.navbar-nav.navbar-right
+				%li
+					%a{'ng-href' => 'signin'} Sign in
