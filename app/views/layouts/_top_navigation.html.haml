@@ -16,7 +16,12 @@
 				%li{ng: {repeat: "nav in topNavs", click: "select(nav.title)", class: "{active: isActive(nav.title)}"}}
 					%a{ng: {href: "{{nav.url}}"}}
 						{{nav.title}}
-			%form.navbar-form.navbar-right{ng: {controller: "UserController", submit: "signin()"}}
+			%form.navbar-form.navbar-right{ng: {controller: "UserController", submit: "signin()", hide: "isSignedIn()"}}
 				.form-group
 					%input.form-control{:placeholder => "Email", :type => "text", "ng-model" => "user.email"}
 				%button.btn.btn-success{:type => "submit"} Sign in
+			%ul.nav.navbar-nav.navbar-right{ng: {controller: "UserController", show: "isSignedIn()"}}
+				%li
+					Hi {{currentUser}}
+				%li
+					%a{'ng-href' => 'signin'} Sign in

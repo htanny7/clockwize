@@ -13,17 +13,17 @@ angular.module('clockwize').factory 'Users', ($resource) ->
 
 		# Execute POST
 		create: (attrs) ->
-			console.log 'aaaa'
 			# new @service(user: attrs).$save (user) ->
 			# user: attrs in Rails becomes user: {email: ....}
 			new @service(user: attrs).$save ((user) ->
 				# Success - 1st function
-				attrs.id = user.id
+				attrs = user
 				# should just attr = user (e.g. user is json
 			),	(error) ->
 				# Error - 2nd function
 				# Example Rails: render json: @user, status: :unprocessable_entity
 				# Becomes: error.data = @user, error.status = 422 (= unprocessable_entity)
+				attrs.error = error.status
 				console.log 'error'
 			attrs
 
