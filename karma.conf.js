@@ -20,7 +20,8 @@ module.exports = function(config) {
 
 	   'app/assets/javascripts/angular/app_spec.js',
 	   'app/assets/javascripts/angular/controllers/*.js',
-      'javascripts/*_spec.js'
+	   'app/assets/javascripts/angular/controllers/*.js.coffee',
+      'spec/javascripts/*_spec.js'
     ],
 
 
@@ -32,8 +33,19 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
+	    '**/*.coffee': ['coffee']
     },
-
+	  coffeePreprocessor: {
+		  // options passed to the coffee compiler
+		  options: {
+			  bare: true,
+			  sourceMap: false
+		  },
+		  // transforming the filenames
+		  transformPath: function(path) {
+			  return path.replace(/\.coffee$/, '.js')
+		  }
+	  },
 
     // test results reporter to use
     // possible values: 'dots', 'progress'
