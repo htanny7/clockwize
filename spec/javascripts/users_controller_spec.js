@@ -18,7 +18,7 @@ describe('UsersController', function () {
 		})();
 	});
 
-	// Injecting mock version
+	// Injecting mock Users
 	beforeEach(module('clockwize'), function($provide) {
 		$provide.factory('Users', mockUsers);
 	});
@@ -31,8 +31,13 @@ describe('UsersController', function () {
 	describe('Users', function () {
 		it('All users', function () {
 			var $scope = {};
+			var allUsers = [{id: 1, email: "john@smith.com"}];
+
 			var controller = $controller('UsersController', { $scope: $scope, Users: mockUsers });
-			expect($scope.users).toBe([{id: 1, email: "john@smith.com"}]);
+
+			// toBe() compares with === which means they need to be identical
+			// objects not just identical values. Here I use toEqual
+			expect($scope.users).toEqual(allUsers);
 		});
 	});
 
