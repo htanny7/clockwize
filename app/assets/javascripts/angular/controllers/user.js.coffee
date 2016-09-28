@@ -2,17 +2,18 @@
 angular.module('clockwize').controller 'UserController', ($scope, Users) ->
 	# currentUser = simple way to detect signed-in user
 	$scope.currentUser = ''
+	$scope.user = {}  # must declare object user for ng-model: "user.email"
 
 	# Sign-in
 	$scope.signin = ->
 		if $scope.user.email
-			user = new Users().create($scope.user)
-			if !user.error?
-				$scope.setCurrentUser(user)
+			u = new Users().create($scope.user)
+			if !u.error?
+				$scope.setCurrentUser(u)
 
 	# Set signed-in user
-	$scope.setCurrentUser = (user) ->
-		$scope.currentUser = user.email
+	$scope.setCurrentUser = (u) ->
+		$scope.currentUser = u.email
 
 	# Is user signed-in?
 	$scope.isSignedin = ->

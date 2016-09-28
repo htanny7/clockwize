@@ -26,18 +26,18 @@ class UsersController < ApplicationController
 	# POST /users.json
 	# This is a simple way create or sign-in user
 	def create
-		@user = User.find_by(email: user_params[:email])
+		respond_to :json
 
-		respond_to do |format|
-			if @user.nil?
-				@user = User.new(user_params)
-				@user.save
-			end
-			if @user.errors.blank?
-				format.json { render json: @user, status: :created }
-			else
-				format.json { render json: @user, status: :unprocessable_entity }
-			end
+		@user = User.find_by(email: user_params[:email])
+		if @user.nil?
+			@user = User.new(user_params)
+			@user.save
+		end
+
+		if @user.errors.blank?
+			format.json { render json: @user, status: :created }
+		else
+			format.json { render json: @user.errors, status: :unprocessable_entity }
 		end
 	end
 
@@ -65,7 +65,30 @@ class UsersController < ApplicationController
 		end
 	end
 
+	def is_signed_in?
+		!current.blank?
+	end
+
+	# Sign in; return errors if there is a current signed-in.
+	def sign_in
+		if is_signed_in?
+			format.json { render json: @user.errors, status: :unprocessable_entity }
+		else
+			current.blank?
+		end
+	end
+
+	# Get and set current user
+	def current
+		session['current_user']
+	end
+
 	private
+
+	# Set current user
+	def current(user)
+		session['current_user'] = user
+	end
 
 	# Use callbacks to share common setup or constraints between actions.
 	def set_user

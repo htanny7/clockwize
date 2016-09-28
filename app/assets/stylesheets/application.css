@@ -13,4 +13,9 @@
  * require_tree .
  *= require_self
  *= require vendor/bootstrap/bootstrap.min
+
+ * ANGULAR PLUG-INS
+ * http://sagrawal14.github.io/bootstrap-angular-validation/#/
+ * https://angular-ui.github.io/bootstrap/
+ *= require vendor/bootstrap-angular-ui/position
  */

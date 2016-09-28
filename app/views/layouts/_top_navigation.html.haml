@@ -18,7 +18,7 @@
 						{{nav.title}}
 			%form.navbar-form.navbar-right{ng: {controller: "UserController", submit: "signin()", hide: "isSignedin()"}}
 				.form-group
-					%input.form-control{:placeholder => "Email", :type => "text", "ng-model" => "user.email"}
+					%input.form-control{:placeholder => "Email", :type => "email", "bs-display-error-as" => "tooltip", "require" => "", ng: {model: "user.email"}}
 				%button.btn.btn-success{:type => "submit"} Sign in
 			%ul.nav.navbar-nav.navbar-right{ng: {controller: "UserController", show: "isSignedin()"}}
 				%li

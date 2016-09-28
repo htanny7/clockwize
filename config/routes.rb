@@ -13,7 +13,13 @@ Rails.application.routes.draw do
 	# Adding extra 'api' layer to retrieve data via JSON
 	namespace :api, default: {format: :json} do
 		resources :events, controller: '/events'
-		resources :users, controller: '/users'
+		resources :users, controller: '/users' do
+			collection do
+				post 'signin'     # /api/users/signin
+				post 'signout'    # /api/users/signout
+				get 'current'     # /api/users/current
+			end
+		end
 	end
 
 	# The priority is based upon order of creation: first created -> highest priority.

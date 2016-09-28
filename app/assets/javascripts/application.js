@@ -20,6 +20,12 @@
 //= require vendor/angular/angular-resource.min.js
 //= require angular-rails-templates
 
+// ANGULAR PLUG-INS
+// http://sagrawal14.github.io/bootstrap-angular-validation/#/
+//= require vendor/bootstrap-angular-validation/bootstrap-angular-validation-all.min
+// https://angular-ui.github.io/bootstrap/
+//= require vendor/bootstrap-angular-ui/position
+
 // BOOTSTRAP
 //= require vendor/bootstrap/bootstrap.min
 
