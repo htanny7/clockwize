@@ -15,5 +15,5 @@ angular.module('clockwize').controller 'UserController', ($scope, Users) ->
 		$scope.currentUser = user.email
 
 	# Is user signed-in?
-	$scope.isSignedIn = ->
-		return $scope.currentUser?
+	$scope.isSignedin = ->
+		return $scope.currentUser.length > 0
